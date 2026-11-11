@@ -102,11 +102,15 @@ img {
 }
 
 /* ---------- Hero ---------- */
-/* The background is a gradient for now.
-   To use your own screenshot, replace the background line with:
-   background: linear-gradient(rgba(18,26,33,0.55), rgba(18,26,33,0.9)), url("images/hero.jpg") center / cover;
-   (the dark gradient on top keeps the text readable over the photo) */
+/* The background stacks three layers (the first one listed is on top):
+   1. A soft blue Sheikah glow behind the title.
+   2. A dark see-through gradient that keeps the text readable over the
+      bright picture, fading to the page color at the bottom so the hero
+      blends into the next section.
+   3. The screenshot itself. "center / cover" centers it and scales it to
+      fill the whole hero area at any screen size (cropping the edges if needed). */
 .hero {
+  position: relative; /* lets the .hero-credit sit in the bottom corner (see below) */
   min-height: 85vh; /* 85% of the screen height */
   display: flex;
   flex-direction: column;
@@ -116,7 +120,24 @@ img {
   padding: 4rem 1.5rem;
   background:
     radial-gradient(circle at 50% 40%, rgba(79, 212, 232, 0.18), transparent 60%),
-    linear-gradient(180deg, #1f3a3f 0%, var(--slate-dark) 100%);
+    linear-gradient(180deg, rgba(18, 26, 33, 0.45) 0%, rgba(18, 26, 33, 0.65) 60%, var(--slate-dark) 100%),
+    url("images/hero.jpg") center / cover;
+}
+
+/* Image credit for the hero picture. position: absolute pins it to the
+   bottom-right corner of .hero (that's why .hero has position: relative). */
+.hero-credit {
+  position: absolute;
+  bottom: 0.75rem;
+  right: 1rem;
+  margin: 0;
+  font-size: 0.75rem;
+  font-style: italic;
+  color: var(--muted);
+}
+
+.hero-credit a {
+  color: var(--sheikah-blue);
 }
 
 .eyebrow {
