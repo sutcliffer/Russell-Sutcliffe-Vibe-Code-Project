@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Character encoding + mobile scaling. Without the viewport line, phones render the page zoomed out. -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Why The Legend of Zelda: Breath of the Wild is one of my favorite games.">
+  <title>My First Open World | Breath of the Wild</title>
+
+  <!-- Google Fonts: Cinzel for headings (old, carved-stone feel), Lato for body text (easy to read). -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Relative path: style.css must sit in the same folder as this file. -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ===== NAVIGATION ===== -->
+  <!-- Each link jumps to a section by its id (href="#story" goes to id="story"). -->
+  <nav class="site-nav">
+    <a href="#top" class="nav-logo">BOTW</a>
+    <ul>
+      <li><a href="#story">My Story</a></li>
+      <li><a href="#freedom">Freedom</a></li>
+      <li><a href="#favorites">Favorites</a></li>
+      <li><a href="#gripes">Gripes</a></li>
+      <li><a href="#newcomers">Should You Play It?</a></li>
+    </ul>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <header class="hero" id="top">
+    <p class="eyebrow">The Legend of Zelda</p>
+    <h1>Breath of the Wild</h1>
+    <p class="tagline">My first open world, and still one of my favorite games.</p>
+    <a href="#story" class="btn">Start the adventure</a>
+  </header>
+
+  <main>
+
+    <!-- ===== MY STORY ===== -->
+    <section id="story" class="section">
+      <h2>How It Started</h2>
+      <div class="two-col">
+        <div>
+          <p>
+            I got my Nintendo Switch for Christmas in 2017. It was my first console, and
+            <em>Breath of the Wild</em> came with it. Before that, the only "real" game I'd
+            put serious time into was Minecraft.
+          </p>
+          <p>
+            So this wasn't just a new game for me. It was the first time I'd ever played an
+            open world game. Hundreds of hours later, it's still one of my favorites, and
+            I've come back and replayed it a couple of times since.
+          </p>
+        </div>
+        <!--
+          <figure> groups an image with its caption. <figcaption> is the caption,
+          and that's where the credit goes, right under the picture.
+          The alt text describes the image for screen readers (and shows if it fails to load).
+        -->
+        <figure class="shot">
+          <img src="images/great-plateau.jpg" alt="Sunset over old stone ruins on the Great Plateau, with a meadow of white flowers in front">
+          <figcaption>
+            Ruins on the Great Plateau. Promotional screenshot &copy; Nintendo (E3 2016), via
+            <a href="https://zeldawiki.wiki/wiki/File:BotW_Great_Plateau_Ruins.png">Zelda Wiki</a>.
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ===== FREEDOM ===== -->
+    <section id="freedom" class="section section-alt">
+      <h2>Why It Feels Like Freedom</h2>
+      <p class="lead">
+        The map felt huge, because it is. And almost all of it is yours to explore however you want.
+      </p>
+      <!-- Three "cards" laid out with CSS Grid (see .card-grid in style.css). -->
+      <div class="card-grid">
+        <article class="card">
+          <h3>See it, go there</h3>
+          <p>If you can see a mountain on the horizon, you can climb it. Almost every surface in the game is climbable.</p>
+        </article>
+        <article class="card">
+          <h3>No set path</h3>
+          <p>After the opening area, the game basically lets you loose. You pick where to go and what to do first.</p>
+        </article>
+        <article class="card">
+          <h3>Exploring is the reward</h3>
+          <p>Wandering off in a random direction almost always turns up something: a shrine, a village, a fight, a view.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===== FAVORITES ===== -->
+    <section id="favorites" class="section">
+      <h2>My Favorites</h2>
+      <div class="two-col">
+        <article class="feature">
+          <figure class="shot">
+            <img src="images/master-sword.jpg" alt="The Master Sword standing in its stone pedestal in Korok Forest">
+            <figcaption>
+              The Master Sword in its resting place. Screenshot by Ghirathem, via
+              <a href="https://zeldawiki.wiki/wiki/File:BotW_Master_Sword_Resting_Place.png">Zelda Wiki</a>.
+              &copy; Nintendo.
+            </figcaption>
+          </figure>
+          <h3>The Master Sword</h3>
+          <p>
+            Honestly one of the prettiest weapon designs in any game. It also gets around my
+            biggest complaint (more on that below): instead of breaking for good, it just runs
+            out of energy and recharges.
+          </p>
+        </article>
+        <article class="feature">
+          <figure class="shot">
+            <img src="images/great-eagle-bow.jpg" alt="Revali firing three glowing arrows at once from the Great Eagle Bow">
+            <figcaption>
+              Revali and the Great Eagle Bow. Screenshot by Croxodile, via
+              <a href="https://zeldawiki.wiki/wiki/File:BotW_Great_Eagle_Bow.png">Zelda Wiki</a>.
+              &copy; Nintendo.
+            </figcaption>
+          </figure>
+          <h3>The Great Eagle Bow</h3>
+          <p>
+            Revali's bow. It fires three arrows at once, which makes it one of the most fun
+            weapons to use in the whole game.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===== GRIPES ===== -->
+    <section id="gripes" class="section section-alt">
+      <h2>It's Not Perfect</h2>
+      <p class="lead">Every favorite has a few things that drive you crazy.</p>
+      <ul class="gripe-list">
+        <li>
+          <strong>Weapons break.</strong>
+          Finding a great weapon and then watching it shatter mid-fight is always the worst.
+        </li>
+        <li>
+          <strong>Climbing in the rain.</strong>
+          Link slips constantly, and it's rough early on. Once you unlock Revali's Gale
+          (a boost that launches you straight up), it's a lot less painful, but it still sucks.
+        </li>
+      </ul>
+    </section>
+
+    <!-- ===== NEWCOMERS ===== -->
+    <section id="newcomers" class="section">
+      <h2>Should You Play It?</h2>
+      <div class="two-col">
+        <div>
+          <p>
+            Yes. It won Game of the Year at The Game Awards in 2017, and it holds up.
+            The exploration, the combat, and the story all come together into something that
+            still feels special years later.
+          </p>
+          <p>
+            My one piece of advice: <strong>go in blind.</strong> The last time I replayed it,
+            I already knew where everything was and exactly what I wanted, and I didn't get
+            nearly as much out of it as the first time. It was still awesome, but the magic of
+            this game is not knowing what's over the next hill. Don't look up guides. Just go.
+          </p>
+        </div>
+        <!-- A small "fact box" using a definition list (<dl>): good HTML for label/value pairs. -->
+        <aside class="fact-box">
+          <h3>Quick Facts</h3>
+          <dl>
+            <dt>Released</dt>
+            <dd>March 3, 2017</dd>
+            <dt>Platforms</dt>
+            <dd>Nintendo Switch &amp; Wii U</dd>
+            <dt>Developer</dt>
+            <dd>Nintendo</dd>
+            <dt>Award</dt>
+            <dd>Game of the Year, The Game Awards 2017</dd>
+          </dl>
+        </aside>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <p>A fan page by Russell for IT 248 at Central Washington University.</p>
+    <p class="small">The Legend of Zelda: Breath of the Wild is a trademark of Nintendo. This is a non-commercial student project.</p>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,352 @@
+/* =========================================================
+   Breath of the Wild fan page: style.css
+   Palette is based on the game's Sheikah tech (dark slate + glowing blue)
+   with warm parchment tones for contrast.
+   ========================================================= */
+
+/* ---------- Color + size variables ----------
+   Define colors once here, then reuse them with var(--name).
+   Change a value here and it updates everywhere. */
+:root {
+  --slate-dark: #121a21;     /* page background */
+  --slate: #1c2830;          /* alternate section background */
+  --slate-light: #2a3a44;    /* cards, boxes */
+  --sheikah-blue: #4fd4e8;   /* glowing accent */
+  --sheikah-orange: #f0a04b; /* secondary accent */
+  --parchment: #ece3cf;      /* main text */
+  --muted: #a9b4b8;          /* softer text */
+  --max-width: 1000px;       /* how wide content can get */
+}
+
+/* ---------- Reset + base ---------- */
+/* box-sizing: border-box makes padding count inside an element's width, which makes layout math easier. */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth; /* nav links glide instead of jumping */
+}
+
+body {
+  margin: 0;
+  background: var(--slate-dark);
+  color: var(--parchment);
+  font-family: "Lato", Arial, sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Cinzel", Georgia, serif;
+  line-height: 1.2;
+  margin-top: 0;
+}
+
+a {
+  color: var(--sheikah-blue);
+}
+
+img {
+  max-width: 100%; /* images never overflow their container */
+  display: block;
+  border-radius: 8px;
+}
+
+/* ---------- Navigation ---------- */
+/* position: sticky keeps the nav at the top while you scroll. */
+.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem 1.5rem;
+  padding: 0.8rem 1.5rem;
+  background: rgba(18, 26, 33, 0.92);
+  border-bottom: 1px solid var(--slate-light);
+}
+
+.nav-logo {
+  font-family: "Cinzel", serif;
+  font-weight: 700;
+  color: var(--sheikah-blue);
+  text-decoration: none;
+  letter-spacing: 0.15em;
+}
+
+.site-nav ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.site-nav ul a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.2s;
+}
+
+.site-nav ul a:hover {
+  color: var(--sheikah-blue);
+}
+
+/* ---------- Hero ---------- */
+/* The background is a gradient for now.
+   To use your own screenshot, replace the background line with:
+   background: linear-gradient(rgba(18,26,33,0.55), rgba(18,26,33,0.9)), url("images/hero.jpg") center / cover;
+   (the dark gradient on top keeps the text readable over the photo) */
+.hero {
+  min-height: 85vh; /* 85% of the screen height */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 4rem 1.5rem;
+  background:
+    radial-gradient(circle at 50% 40%, rgba(79, 212, 232, 0.18), transparent 60%),
+    linear-gradient(180deg, #1f3a3f 0%, var(--slate-dark) 100%);
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: var(--sheikah-orange);
+  margin: 0 0 0.5rem;
+  font-size: 0.9rem;
+}
+
+.hero h1 {
+  font-size: clamp(2.5rem, 8vw, 5rem); /* scales with screen width, between a min and max */
+  margin-bottom: 1rem;
+  text-shadow: 0 0 25px rgba(79, 212, 232, 0.45); /* Sheikah glow */
+}
+
+.tagline {
+  font-size: 1.25rem;
+  color: var(--muted);
+  max-width: 34rem;
+  margin: 0 0 2rem;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.8rem 1.8rem;
+  border: 2px solid var(--sheikah-blue);
+  border-radius: 4px;
+  color: var(--sheikah-blue);
+  text-decoration: none;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  transition: background 0.2s, color 0.2s;
+}
+
+.btn:hover {
+  background: var(--sheikah-blue);
+  color: var(--slate-dark);
+}
+
+/* ---------- Sections ---------- */
+/* Each section is full width, but its content is centered and capped at --max-width.
+   The calc() padding trick does that without needing an extra wrapper div. */
+.section {
+  padding: 4.5rem max(1.5rem, calc((100% - var(--max-width)) / 2));
+}
+
+.section-alt {
+  background: var(--slate);
+}
+
+.section h2 {
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  color: var(--sheikah-blue);
+  margin-bottom: 1.5rem;
+}
+
+.lead {
+  font-size: 1.2rem;
+  color: var(--muted);
+  max-width: 40rem;
+}
+
+/* ---------- Layout helpers ---------- */
+/* Two columns side by side on wide screens; stacks to one column on phones (see media query at bottom). */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+/* auto-fit + minmax = as many 240px+ columns as fit, so it adapts to screen size automatically. */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.card {
+  background: var(--slate-light);
+  padding: 1.5rem;
+  border-radius: 8px;
+  border-top: 3px solid var(--sheikah-blue);
+}
+
+.card h3 {
+  color: var(--sheikah-orange);
+  font-size: 1.15rem;
+}
+
+.card p {
+  margin-bottom: 0;
+}
+
+.feature h3 {
+  margin-top: 1.2rem;
+  color: var(--sheikah-orange);
+}
+
+/* ---------- Screenshot placeholders ---------- */
+/* Dashed boxes that hold the spot until you add real screenshots.
+   aspect-ratio keeps them the shape of a Switch screenshot (16:9). */
+.shot-placeholder {
+  aspect-ratio: 16 / 9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1rem;
+  border: 2px dashed var(--sheikah-blue);
+  border-radius: 8px;
+  color: var(--muted);
+  background: rgba(79, 212, 232, 0.05);
+  font-style: italic;
+}
+
+/* ---------- Screenshots with credits ---------- */
+/* <figure> has a default side margin in browsers; margin: 0 removes it so the
+   image lines up with the text next to it. */
+.shot {
+  margin: 0;
+}
+
+/* width: 100% + height: auto makes the image shrink to fit its column
+   without stretching. display: block removes the small gap under inline images. */
+.shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid var(--sheikah-blue);
+}
+
+/* The credit line under each image: small and muted so it doesn't
+   compete with the picture. */
+.shot figcaption {
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+  color: var(--muted);
+  font-style: italic;
+}
+
+.shot figcaption a {
+  color: var(--sheikah-blue);
+}
+
+/* ---------- Gripes ---------- */
+.gripe-list {
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0 0;
+  display: grid;
+  gap: 1.2rem;
+}
+
+.gripe-list li {
+  background: var(--slate-light);
+  padding: 1.2rem 1.5rem;
+  border-radius: 8px;
+  border-left: 4px solid var(--sheikah-orange);
+}
+
+.gripe-list strong {
+  display: block;
+  color: var(--sheikah-orange);
+  font-family: "Cinzel", serif;
+  margin-bottom: 0.3rem;
+}
+
+/* ---------- Fact box ---------- */
+.fact-box {
+  background: var(--slate-light);
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid rgba(79, 212, 232, 0.35);
+  box-shadow: 0 0 20px rgba(79, 212, 232, 0.1);
+}
+
+.fact-box h3 {
+  color: var(--sheikah-blue);
+}
+
+.fact-box dl {
+  margin: 0;
+}
+
+.fact-box dt {
+  font-weight: 700;
+  color: var(--sheikah-orange);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.fact-box dd {
+  margin: 0 0 0.9rem;
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  border-top: 1px solid var(--slate-light);
+  color: var(--muted);
+}
+
+.site-footer p {
+  margin: 0.3rem 0;
+}
+
+.small {
+  font-size: 0.85rem;
+}
+
+/* ---------- Responsive ---------- */
+/* Below 720px wide (phones, small tablets), stack the two-column layouts. */
+@media (max-width: 720px) {
+  .two-col {
+    grid-template-columns: 1fr;
+  }
+
+  .site-nav {
+    justify-content: center;
+  }
+
+  .section {
+    padding: 3.5rem 1.25rem;
+  }
+}
